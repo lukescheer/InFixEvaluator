@@ -5,6 +5,7 @@ import java.io.IOException;
 /**
  * Created by Utkarsh on 8/30/18.
  * Revised by Geoerge Adams on 09/02/18.
+ * Project completed by Luke Scheer on 09/14/18.
  */
 
 
@@ -16,7 +17,6 @@ public class InFixEvaluator
 
     public double evaluator(String str) throws Exception
     {
-        //Write your code here
         // The input comes as a string; the operands are of type double.
         // The final output should be returned as a double.
 
@@ -34,7 +34,6 @@ public class InFixEvaluator
                     if (i != 0 && str.charAt(i - 1) != ' ' || (i != len && str.charAt(i + 1) != ' ')) {
                         throw new Exception("Invalid expression");
                         //System.out.println("Invalid expression");
-                        //return -6.766;
                     }
                 }
                 i++;
@@ -44,7 +43,6 @@ public class InFixEvaluator
                     if (str.charAt(i + 3) != ' ' || (i != 0 && str.charAt(i-1) != ' ')) {
                         throw new Exception("Invalid expression");
                         //System.out.println("Invalid expression");
-                        //return -6.666;
                     }
                     i = i + 4;
                 }
@@ -79,12 +77,10 @@ public class InFixEvaluator
                 if (i != 0 && ((part[i - 1].equals("(") || part[i - 1].equals("{") || part[i - 1].equals("[")))) {
                     throw new Exception("Invalid expression");
                     //System.out.println("Invalid expression");
-                    //return -4.666;
                 }
                 if (operands.IsEmpty() || operators.IsEmpty()) {
                     throw new Exception("Invalid expression");
                     //System.out.println("Invalid expression");
-                    //return -5.666;
                 }
                 endpar = true;
             } else {
@@ -100,11 +96,9 @@ public class InFixEvaluator
                 }
             }
             if (false) {
-            //if (!endpar) {
                 throw new Exception("Invalid expression");
                 //System.out.println("Invalid expression");
                 //System.out.println(part[i]);
-                //return -6.76666;
             } else if(endpar) {
                 lastopen = String.valueOf(paren.pop());
                 switch (part[i]) {
@@ -112,21 +106,18 @@ public class InFixEvaluator
                         if (!lastopen.equals("(")) {
                             throw new Exception("Invalid expression");
                             //System.out.println("Invalid expression");
-                            //return -7.666;
                         }
                         break;
                     case "}":
                         if (!lastopen.equals("{")) {
                             throw new Exception("Invalid expression");
                             //System.out.println("Invalid expression");
-                            //return -7.666;
                         }
                         break;
                     case "]":
                         if (!lastopen.equals("[")) {
                             throw new Exception("Invalid expression");
                             //System.out.println("Invalid expression");
-                            //return -7.666;
                         }
                         break;
                 }
@@ -142,7 +133,6 @@ public class InFixEvaluator
                     if(operands.IsEmpty()){
                         throw new Exception("Invalid expression");
                         //System.out.println("Invalid expression");
-                        //return -8.666;
                     }
                     op2 = new Double(operands.pop().toString());
                     //System.out.println("op2 " + op2);
@@ -150,7 +140,6 @@ public class InFixEvaluator
                         if(operands.IsEmpty()){
                             throw new Exception("Invalid expression");
                             //System.out.println("Invalid expression");
-                            //return -8.666;
                         }
                         op1 = new Double(operands.pop().toString());
                         //System.out.println(op1);
@@ -174,10 +163,9 @@ public class InFixEvaluator
                             break;
                     }
 
-                    opapar = false;  //use stack???
+                    opapar = false;  
                 } else{
                     operators.pop();
-                    //paren.pop();
                 }
             }
             //System.out.println(i);
@@ -185,7 +173,6 @@ public class InFixEvaluator
         op2 = new Double(operands.pop().toString());
         return op2;
 
-        //return 0.0;  //remove this line and return the appropriate answer
     }
 
     public static void main(String[] args)throws IOException
@@ -195,6 +182,7 @@ public class InFixEvaluator
             //System.out.println(i.evaluator(args[0]));
             System.out.println(i.evaluator("( 2 ( + 3 ) )"));
             //System.out.println(i.evaluator("( 2 + sin ( 3 ) )  "));
+//      Used for testing
 //            ( 2 + 3 )
 //            ( ( ) 2 + 3 )
 //            ( ( 2 ) + 3 )
@@ -202,7 +190,7 @@ public class InFixEvaluator
 //            ( ( 2 + 3 ) )
 //            ( 2 ( ) + 3 )
 //            ( 2 ( + ) 3 )
-//            ( 2 ( + 3 ) )     need to fix
+//            ( 2 ( + 3 ) )     
 //            ( 2 + ( ) 3 )
 //            ( 2 + ( 3 ) )
 //            ( 2 + 3 ( ) )
