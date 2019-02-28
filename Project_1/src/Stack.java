@@ -4,6 +4,7 @@ import java.util.ArrayList;
  * Created by Utkarsh on 8/30/18.
  * Revised by George Adams on 09/02/18.
  * Revised by Shivaram Gopal on 09/02/18.
+ * Project completed by Luke Scheer on 9/14/18.
  */
 
 
@@ -15,21 +16,18 @@ public class Stack<T>
 
     public Stack(int capacity)
     {
+        //Initialize the stack here
         myStack = (T[]) new Object[capacity];
         n = 0;
-
-        //Initialize your stack here
     }
 
     public boolean IsEmpty(){
-        //Write your code here
         //Return whether the stack is empty or not
 
         return (myStack[0] == null);
     }
 
     public boolean push(T val){
-        //Write your code here
         //Push the new element on the stack
         //If the element was added successfully, return true
         //If the element was not added, return false
@@ -39,16 +37,14 @@ public class Stack<T>
             return false;
         }
         n++;
-        //remove
         //System.out.println("pushed " + val);
-        //////////////////////
         return true;
 
     }
 
     public T pop() throws IndexOutOfBoundsException {
         //Write your code here
-        // Method should return the top element of the stack
+        // Method returns the top element of the stack
         // This removes the element from the stack
         // Incase the stack is empty, it should throw an error,
         // with the message "Empty Stack"
@@ -61,7 +57,6 @@ public class Stack<T>
             }
             T top = myStack[--n];
             myStack[n] = null;
-            //n--;
             //System.out.println("popped " + top);
             return top;
 
@@ -70,14 +65,11 @@ public class Stack<T>
         }
 
 
-        return null;    // add your own return statement
+        return null;    
     }
 
     public int size()
     {
-        //Write your code here
-        //number of elements currently in the stack
-
-        return (n);               //remove this line and return the appropriate answer
+        return (n);               //returns number of elements in the stack
     }
 }
